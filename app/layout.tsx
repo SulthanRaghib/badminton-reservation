@@ -20,8 +20,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
-        {children}
+      <body
+        className={`${_geist.className} ${_geistMono.className} font-sans antialiased`}
+      >
+        {/* Skip link for keyboard users */}
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 bg-primary text-primary-foreground px-3 py-2 rounded"
+        >
+          Skip to content
+        </a>
+        <main id="content">{children}</main>
         <Toaster />
         <Analytics />
       </body>
