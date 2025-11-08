@@ -99,16 +99,27 @@ Proyek ini adalah _frontend_ murni dan **memerlukan backend** untuk berjalan.
 1.  **Jalankan Backend Server (Wajib):**
 
     - Clone dan jalankan server backend terlebih dahulu.
-    - `git clone https://github.com/SulthanRaghib/badminton-reservation-api.git`
-    - `cd badminton-reservation-api`
-    - `go run main.go`
+
+      ```bash
+      git clone https://github.com/SulthanRaghib/badminton-reservation-api.git
+
+      cd badminton-reservation-api
+
+      go run main.go
+      ```
+
     - Server backend sekarang berjalan di `http://localhost:8088`.
 
 2.  **Jalankan Frontend (Proyek Ini):**
 
     - Di terminal terpisah, clone repositori _frontend_ ini:
-    - `git clone https://github.com/sulthanraghib/badminton-reservation.git`
-    - `cd badminton-reservation`
+
+      ```bash
+      git clone https://github.com/sulthanraghib/badminton-reservation.git
+
+      cd badminton-reservation
+      ```
+
     - Instal dependensi:
       ```bash
       npm install
