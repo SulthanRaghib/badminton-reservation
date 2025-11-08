@@ -55,14 +55,13 @@ export function CustomerInfoStep({
 
     const newErrors: { name?: string; email?: string; phone?: string } = {};
     if (!name) {
-      newErrors.name = "Please enter your full name";
+      newErrors.name = "Masukkan nama lengkap";
     }
     if (!email || !validateEmail(email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = "Masukkan alamat email yang valid";
     }
     if (!phone || !validatePhone(phone)) {
-      newErrors.phone =
-        "Please enter a valid phone number (at least 10 digits)";
+      newErrors.phone = "Masukkan nomor telepon yang valid (minimal 10 digit)";
     }
 
     setErrors(newErrors);
@@ -122,6 +121,11 @@ export function CustomerInfoStep({
             required
             disabled={isLoading}
           />
+          {errors.name && (
+            <p className="mt-1 text-sm text-red-600" role="alert">
+              {errors.name}
+            </p>
+          )}
         </div>
 
         <div>
@@ -136,6 +140,11 @@ export function CustomerInfoStep({
             required
             disabled={isLoading}
           />
+          {errors.email && (
+            <p className="mt-1 text-sm text-red-600" role="alert">
+              {errors.email}
+            </p>
+          )}
         </div>
 
         <div>
