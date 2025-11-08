@@ -253,8 +253,13 @@ export default function FindBookingPage() {
                                   ).toLocaleDateString()}
                                 </p>
                                 <p className="text-sm text-muted-foreground">
-                                  {reservation.start_time} -{" "}
-                                  {reservation.end_time}
+                                  {reservation.start_time
+                                    ? reservation.start_time
+                                    : "-"}{" "}
+                                  -{" "}
+                                  {reservation.end_time
+                                    ? reservation.end_time
+                                    : "-"}
                                 </p>
                               </div>
                             </div>
