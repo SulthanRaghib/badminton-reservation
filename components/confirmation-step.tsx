@@ -37,11 +37,18 @@ export function ConfirmationStep({
   error,
 }: ConfirmationStepProps) {
   const formatCurrency = (amount: number | null) => {
-    if (!amount) return "N/A";
+    // treat null/undefined as missing; allow 0 to format as currency
+    if (amount == null) return "N/A";
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
       currency: "IDR",
     }).format(amount);
+  };
+
+  const renderValue = (value: any, fallback = "N/A") => {
+    if (value === null || typeof value === "undefined" || value === "")
+      return fallback;
+    return value;
   };
 
   return (
@@ -84,7 +91,7 @@ export function ConfirmationStep({
                 Court
               </p>
               <p className="text-lg font-semibold text-foreground">
-                {selectedCourtName || "N/A"}
+                {renderValue(selectedCourtName)}
               </p>
             </div>
             <div>
@@ -104,20 +111,28 @@ export function ConfirmationStep({
           <div className="grid gap-3 text-sm">
             <div>
               <p className="text-xs text-muted-foreground">Name</p>
-              <p className="font-medium text-foreground">{customerName}</p>
+              <p className="font-medium text-foreground">
+                {renderValue(customerName, "-")}
+              </p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground">Email</p>
-              <p className="font-medium text-foreground">{customerEmail}</p>
+              <p className="font-medium text-foreground">
+                {renderValue(customerEmail, "-")}
+              </p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground">Phone</p>
-              <p className="font-medium text-foreground">{customerPhone}</p>
+              <p className="font-medium text-foreground">
+                {renderValue(customerPhone, "-")}
+              </p>
             </div>
             {notes && (
               <div>
                 <p className="text-xs text-muted-foreground">Notes</p>
-                <p className="font-medium text-foreground">{notes}</p>
+                <p className="font-medium text-foreground">
+                  {renderValue(notes, "-")}
+                </p>
               </div>
             )}
           </div>
