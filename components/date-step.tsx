@@ -133,6 +133,8 @@ export function DateStep({ onDateSelected, selectedDate }: DateStepProps) {
                       ? "bg-primary text-primary-foreground border-none"
                       : "bg-white")
                   }
+                  aria-pressed={isSelected}
+                  role="listitem"
                 >
                   <span className="text-sm font-medium uppercase">{day}</span>
                   <span className="text-3xl font-bold">{date}</span>
@@ -152,6 +154,7 @@ export function DateStep({ onDateSelected, selectedDate }: DateStepProps) {
             className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 shadow"
             onClick={() => scroll("left")}
             aria-label="Scroll left"
+            disabled={!canScrollLeft}
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
@@ -162,6 +165,7 @@ export function DateStep({ onDateSelected, selectedDate }: DateStepProps) {
             className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 shadow"
             onClick={() => scroll("right")}
             aria-label="Scroll right"
+            disabled={!canScrollRight}
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
