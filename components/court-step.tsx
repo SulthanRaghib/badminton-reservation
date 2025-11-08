@@ -17,6 +17,11 @@ export function CourtStep({
   selectedCourtId,
   disabled,
 }: CourtStepProps) {
+  const formatCurrency = (amount: number) =>
+    new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(amount);
   const [courts, setCourts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -76,6 +81,9 @@ export function CourtStep({
             onClick={() =>
               onCourtSelected(court.id, court.name, court.price_per_hour)
             }
+            type="button"
+            aria-label={`Select ${court.name}`}
+            aria-pressed={selectedCourtId === court.id}
             variant={selectedCourtId === court.id ? "default" : "outline"}
             className="w-full h-auto flex-col items-start justify-start gap-2 p-4 text-left overflow-hidden"
           >
@@ -86,7 +94,7 @@ export function CourtStep({
               {court.description}
             </div>
             <span className="text-sm font-medium mt-2">
-              Rp {court.price_per_hour.toLocaleString("id-ID")}
+              {formatCurrency(court.price_per_hour)}
               <span className="text-xs opacity-80">/hour</span>
             </span>
           </Button>
